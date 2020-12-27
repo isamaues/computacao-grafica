@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalho Prático 1</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/css/uikit.min.css" />
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.5/dist/js/uikit-icons.min.js"></script>
+  <!-- P5.js -->
+  <script src="p5.js"></script>
+  <!-- Implementação dos algoritmos-->
+  <script src="breseham.js"></script>
+  <!-- Sketch base -->
+  <script src="sketch.js"></script>
+</head>
+
+<body>
+  <!-- Barra de navegação que contorla os algoritmos -->
+  <nav class="uk-navbar-container" uk-navbar>
+
+    <div class="uk-navbar-left">
+      
+      <!-- Título -->
+      <a class="uk-navbar-item uk-logo" href="#">Trabalho prático 1</a>
+
+      <!-- Botões -->
+      <ul class="uk-navbar-nav">
+        <li class="uk-active"><a href="#">Active</a></li>
+        <li>
+            <a href="#">Parent</a>
+            <div class="uk-navbar-dropdown">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    <li class="uk-active"><a href="#">Active</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">Item</a></li>
+    </ul>
+
+    <!-- Dropdown com as escolhas de algoritmos -->
+    <div class="uk-navbar-item">
+      <form action="javascript:void(0)">
+        <span class="uk-label">Selecionar Algoritmo</span>
+        <select class="uk-select"> 
+          <option>Bresenham</option>
+          <option>Círculos</option>
+          <option>Curvas</option>
+          <option>Polilinhas</option>
+          <option>Preenchimento Recursivo</option>
+          <option>Varredura</option>
+          <option>Recorte de linha</option>
+          <option>Recorte de polígono</option>
+          <option>Transformações</option>
+          <option>Projeções ortogonais</option>
+          <option>Perspectiva</option>
+        </select>
+      </form>
+    </div>
+
+    </div>
+
+
+
+<!-- Área onde o canvas com os desenhos será carregado -->
+</nav>
+<div class="uk-section uk-section-default">
+  <div class="uk-container uk-align-center">
+    <main >
+    </main>
+  </div>
+</div>
+</body>
+
+</html>
