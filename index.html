@@ -20,8 +20,17 @@
   <script src="p5.js"></script>
   <!-- Implementação dos algoritmos-->
   <script src="algorithms/bresenham.js"></script>
-  <!-- Sketch base -->
-  <script src="sketch.js"></script>
+  <script src="algorithms/circle.js"></script>
+  <script src="algorithms/curve.js"></script>
+  <script src="algorithms/lineClipping.js"></script>
+  <script src="algorithms/ortogonalProjection.js"></script>
+  <script src="algorithms/perspective.js"></script>
+  <script src="algorithms/polygonClipping.js"></script>
+  <script src="algorithms/polyline.js"></script>
+  <script src="algorithms/recursivePadding.js"></script>
+  <script src="algorithms/scanConversion.js"></script>
+  <script src="algorithms/transformations.js"></script>
+  
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -73,48 +82,45 @@
 <!-- Fim da barra de navegação -->
 
 <div class="uk-text-center" id="content" uk-grid>
+  
+    <!--Sessão a equerda onde está o canvas-->
     <div class="uk-width-3-5 uk-margin-medium-top">
         <main></main>
     </div>
-    <!-- Seção com o painel de configurações do algoritmo selecionado-->
+
+    <!-- Seção a direita com o menu de configurações do algoritmo selecionado-->
+    <!-- Todo os menus são listado abaixo e por padrão são invisíveis -->
+    <!-- quando um algoritmo é selecionado, seu menu se torna visível-->
     <div class="uk-width-2-5 uk-padding">
-      <form>
+
+      <!-- Menu bresenham -->
+      <form  class="uk-animation-fade" id="bresenham-menu">
         <fieldset class="uk-fieldset">
     
             <legend class="uk-legend">Bresenham</legend>
     
             <div class="uk-margin">
-                <input class="uk-input" type="text" placeholder="Input">
+              <label class="uk-form-label">Coordenadas do ponto inicial</label>
+                <input class="uk-input" type="text" placeholder="X0">
+                <input class="uk-input" type="text" placeholder="Y0">
             </div>
-    
+
             <div class="uk-margin">
-                <select class="uk-select">
-                    <option>Option 01</option>
-                    <option>Option 02</option>
-                </select>
-            </div>
+              <label class="uk-form-label">Coordenadas do ponto final</label>
+              <input class="uk-input" type="text" placeholder="X1">
+              <input class="uk-input" type="text" placeholder="Y1">
+          </div>
     
-            <div class="uk-margin">
-                <textarea class="uk-textarea" rows="5" placeholder="Textarea"></textarea>
-            </div>
-    
-            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                <label><input class="uk-radio" type="radio" name="radio2" checked> A</label>
-                <label><input class="uk-radio" type="radio" name="radio2"> B</label>
-            </div>
-    
-            <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                <label><input class="uk-checkbox" type="checkbox" checked> A</label>
-                <label><input class="uk-checkbox" type="checkbox"> B</label>
-            </div>
-    
-            <div class="uk-margin">
-                <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1">
-            </div>
+            <button class="uk-button uk-button-default">Desenhar</button>
     
         </fieldset>
     </form>
-    </div>
+
+    <!-- Menu círclulos -->
+    <form  class="uk-animation-fade uk-hidden" id="circle-menu">
+      <h1>nada qui por enquanto</h1>
+    </form>
+  </div>
 </div>
 
 <!-- Rodapé -->
@@ -126,5 +132,8 @@
   </div>
 </footer>
 </body>
+
+<!-- Sketch base -->
+<script src="sketch.js"></script>
 
 </html>
