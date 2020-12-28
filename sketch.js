@@ -8,14 +8,35 @@ const width = 600;
 const height = 600;
 // Tamanho do lado do quadrado
 const squareSide = Math.floor( width/rows );
+/*Objeto que armazena os controladores de cada algoritmo de desenho
+cada chave é uma opção do select em index.html e cada valor é
+uma função que implementa o algoritmo a implementação de cada
+  função pode ser encontrada na pasta algorithms/ */
+var controllersList = {
+  "Bresenham": bresenhamController,
+  "Círculos": circleController,
+  "Curvas": curveController,
+  "Polilinhas": polylineController,
+  "Preenchimento Recursivo": recursivePaddingController,
+  "Varredura": scanConversionController,
+  "Recorte de linha": lineClippingController,
+  "Recorte de polígono": polygonClippingController,
+  "Transformações": transformationsController,
+  "Projeções ortogonais": ortogonalProjectionController,
+  "Perspectiva": perspectiveController,
+};
 // Estado global com o último algoritmo selecionado
 // por padrão é o algoritmo de linhas de Bresenham
-var lastAlg = currentAlg = "Brensenham";
+var lastAlg = "Bresenham";
+var currentAlg = "Bresenham";
+// Estado global com o último controlador selecionado
+// por padrão é o controlador do algoritmo de linhas de Bresenham
+var controller = controllersList[currentAlg];
 
 function setup() {
   // método que faz o preparo do desenho
   createCanvas(width, height);
-  frameBuffer = makeFrameBuffer(rows, cols); 
+  frameBuffer = makeFrameBuffer(rows, cols);
   // adiciona os event listeners que detectam a escolha de algoritmo
   addAlgChoiceListener();
 }
@@ -24,11 +45,17 @@ function draw() {
   background(200);
   // checa se o algoritmo escolhido mudou
   let algHasChanged = lastAlg === currentAlg ? false : true;
-  lastAlg = currentAlg;
-  // caso sim, reiniciamos o frameBuffer
-  if (algHasChanged) frameBuffer = makeFrameBuffer(rows, cols);
+  // caso sim, fazemos o preparo para o novo algoritmo
+  if (algHasChanged){
+    frameBuffer = makeFrameBuffer(rows, cols);
+    controller = controllersList[currentAlg];
+    switchMenu();
+  }
   // caso não, é proseguido com o desenho do algoritmo passado
   drawFrameBuffer();
+
+  // Por último, atualiza a informação sobre o último algoritmo escolhido
+  lastAlg = currentAlg; 
 }
 
 
@@ -98,4 +125,18 @@ function addAlgChoiceListener(){
     // currentAlgorithm é um estado global
     currentAlg = algChoices.value;
   });
+}
+
+function switchMenu(){
+  // Troca o menu de opções para refletir a escolha
+  // atual do algoritmo de desenho
+
+  // Some com o menu passado
+  console.log(lastAlg);
+  let lastMenu = document.getElementById(controllersList[lastAlg].menuId);
+  lastMenu.classList.add('uk-hidden');
+  //aparce com o novo menu
+  let currentMenu = document.getElementById(controllersList[currentAlg].menuId);
+  currentMenu.classList.remove('uk-hidden');
+  console.log(currentMenu.classList);
 }

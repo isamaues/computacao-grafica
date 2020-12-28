@@ -1,3 +1,17 @@
+const bresenhamController = {
+    showName: "Bresenham",
+    menuId: "bresenham-menu",
+    drawingLogic: bresenhamDrawningLogic,
+};
+
+function bresenhamDrawningLogic(){
+    // desenha o ponto 1 assim que ele for válido e completo    
+    
+    // desenha o ponto 2 assim que ele for válido e completo
+    
+    // faz o desenho quando o botão desenhar é clicado
+}
+
 function bresenhamAlgorithm(x0, y0, x1, y1){
     // Implementação do algoritmos de desenho de 
     // linhas de Bresenham
@@ -8,7 +22,7 @@ function bresenhamAlgorithm(x0, y0, x1, y1){
     var y = y0;
     
     for (var x = x0; x <= x1; x++) {
-        grid[x][y] = 1;
+        frameBuffer[x][y] = 1;
         error += deltaErr;
         if (error >= 0.5) {
         y += (deltaY > 0 ? 1 : -1);
