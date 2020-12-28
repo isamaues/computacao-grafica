@@ -10,7 +10,7 @@ const height = 600;
 const squareSide = Math.floor( width/rows );
 // Estado global com o último algoritmo selecionado
 // por padrão é o algoritmo de linhas de Bresenham
-var currentAlgorithm = "Brensenham";
+var lastAlg = currentAlg = "Brensenham";
 
 function setup() {
   // método que faz o preparo do desenho
@@ -21,8 +21,13 @@ function setup() {
 }
 
 function draw() {
-  // método que é chamado constantemente para atualizar o desenho
   background(200);
+  // checa se o algoritmo escolhido mudou
+  let algHasChanged = lastAlg === currentAlg ? false : true;
+  lastAlg = currentAlg;
+  // caso sim, reiniciamos o frameBuffer
+  if (algHasChanged) frameBuffer = makeFrameBuffer(rows, cols);
+  // caso não, é proseguido com o desenho do algoritmo passado
   drawFrameBuffer();
 }
 
@@ -91,6 +96,6 @@ function addAlgChoiceListener(){
 
   algChoices.addEventListener("change", function() {
     // currentAlgorithm é um estado global
-    currentAlgorithm = algChoices.value;
+    currentAlg = algChoices.value;
   });
 }
