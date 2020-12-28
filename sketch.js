@@ -8,12 +8,16 @@ const width = 600;
 const height = 600;
 // Tamanho do lado do quadrado
 const squareSide = Math.floor( width/rows );
-
+// Estado global com o último algoritmo selecionado
+// por padrão é o algoritmo de linhas de Bresenham
+var currentAlgorithm = "Brensenham";
 
 function setup() {
   // método que faz o preparo do desenho
   createCanvas(width, height);
-  frameBuffer = makeFrameBuffer(rows, cols);
+  frameBuffer = makeFrameBuffer(rows, cols); 
+  // adiciona os event listeners que detectam a escolha de algoritmo
+  addAlgChoiceListener();
 }
 
 function draw() {
@@ -77,4 +81,16 @@ function markSquare() {
 
   // Atualiza o frame buffer
   frameBuffer[rowClicked][colClicked] = 1;
+}
+
+
+function addAlgChoiceListener(){
+  // adiciona o event listener que 
+  // verifica qual algoritmo está selecionado no momento
+  var algChoices = document.getElementById("algorithm-selection");
+
+  algChoices.addEventListener("change", function() {
+    // currentAlgorithm é um estado global
+    currentAlgorithm = algChoices.value;
+  });
 }
