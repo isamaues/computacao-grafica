@@ -73,6 +73,10 @@ function makeFrameBuffer(rows, cols) {
   return arr;
 }
 
+function resetFrameBuffer(){
+  //seria interessante uma função que limpa o frame buffer ou um botão de restart na página, talvez uma função undo
+}
+
 
 function drawFrameBuffer() {
   // usa as informações sobre pixels a desenhar
@@ -98,8 +102,8 @@ function drawFrameBuffer() {
 var points = [];
 function mouseClicked(){
   // Executa o código abaixo quando o mouse é clicado
-  console.log('mouseClicked');
-  if (mouseX > width || mouseY > height) return console.log('click disposed');
+  //console.log('mouseClicked');
+  if (mouseX > width || mouseY > height) return /*console.log('click disposed')*/;
   else {
     let point = {x: getSquarePosition().x, y: getSquarePosition().y}
     points.push(point);
@@ -114,28 +118,19 @@ function markSquare() {
   // baseado nas coordenadas x e y do mouse quando clicado
   // o quadrado marcado será armazenado no frame buffer
   // Atualiza o frame buffer
-  console.log('markSquare');
+  //console.log('markSquare');
   squarePositionX = getSquarePosition().x;
   squarePositionY = getSquarePosition().y;
-  //console.log('x',getSquarePosition().x)
+
   frameBuffer[squarePositionX][squarePositionY] = 1;
 }
 
-function getSquarePosition(){//Esboço
-  /*var squarePosition
-  var squarePositionX
-  var squarePositionY
-  squarePositionX = rowClicked
-  squarePositionY = colClicked
-  squarePosition = [squarePositionX,squarePositionY]//O que pode ser um x e y inicial ou final no bresenham
-  return squarePosition*/
-  console.log('getSquarePosition');
-  
+function getSquarePosition(){
+
+  //console.log('getSquarePosition');
 
   let rowClicked = Math.floor(mouseX/squareSide);
   let colClicked = Math.floor(mouseY/squareSide);
-  //console.log('row',rowClicked);
-  //console.log('col',colClicked);
   var x = rowClicked;
   var y = colClicked;
   return {x, y};
