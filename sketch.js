@@ -53,7 +53,7 @@ function draw() {
   }
   // caso não, é proseguido com o desenho do algoritmo passado
   drawFrameBuffer();
-
+  //controller.drawingLogic();
   // Por último, atualiza a informação sobre o último algoritmo escolhido
   lastAlg = currentAlg; 
 }
@@ -95,24 +95,50 @@ function drawFrameBuffer() {
     }
   }
 }
-
+var points = [];
 function mouseClicked(){
   // Executa o código abaixo quando o mouse é clicado
-  markSquare();
+  console.log('mouseClicked');
+  if (mouseX > width || mouseY > height) return console.log('click disposed');
+  else {
+    let point = {x: getSquarePosition().x, y: getSquarePosition().y}
+    points.push(point);
+    console.log('point',point);
+    console.log('points',points);
+    markSquare();
+  }
 }
 
 function markSquare() {
   // método auxiliar para marcar um quadrado
   // baseado nas coordenadas x e y do mouse quando clicado
   // o quadrado marcado será armazenado no frame buffer
+  // Atualiza o frame buffer
+  console.log('markSquare');
+  squarePositionX = getSquarePosition().x;
+  squarePositionY = getSquarePosition().y;
+  //console.log('x',getSquarePosition().x)
+  frameBuffer[squarePositionX][squarePositionY] = 1;
+}
+
+function getSquarePosition(){//Esboço
+  /*var squarePosition
+  var squarePositionX
+  var squarePositionY
+  squarePositionX = rowClicked
+  squarePositionY = colClicked
+  squarePosition = [squarePositionX,squarePositionY]//O que pode ser um x e y inicial ou final no bresenham
+  return squarePosition*/
+  console.log('getSquarePosition');
   
-  // descarta cliques fora da área do canvas
-  if (mouseX > width || mouseY > height) return; 
+
   let rowClicked = Math.floor(mouseX/squareSide);
   let colClicked = Math.floor(mouseY/squareSide);
-
-  // Atualiza o frame buffer
-  frameBuffer[rowClicked][colClicked] = 1;
+  //console.log('row',rowClicked);
+  //console.log('col',colClicked);
+  var x = rowClicked;
+  var y = colClicked;
+  return {x, y};
 }
 
 

@@ -94,7 +94,7 @@
     <div class="uk-width-2-5 uk-padding">
 
       <!-- Menu bresenham -->
-      <form  class="uk-animation-fade" id="bresenham-menu">
+      <form  class="uk-animation-fade" id="bresenhamMenu">
         <fieldset class="uk-fieldset">
     
             <legend class="uk-legend">Bresenham</legend>
@@ -111,14 +111,22 @@
               <input class="uk-input" type="text" placeholder="Y1">
           </div>
     
-            <button class="uk-button uk-button-default">Desenhar</button>
-    
+            <button id="drawBtn" type="click" class="uk-button uk-button-default">Desenhar</button>
+            <!--https://www.w3schools.com/jsref/met_element_addeventlistener.asp-->
+            <!--https://www.youtube.com/watch?v=S7FhYIeTxvU-->
+            <!--type = bresenham/javascript-->
+            <script>
+              document.getElementById("drawBtn").addEventListener("click",(e) => {
+                console.log('hello world')
+                e.preventDefault();              
+                controller.drawingLogic();
+              });</script>
         </fieldset>
     </form>
 
     <!-- Menu círclulos -->
     <form  class="uk-animation-fade uk-hidden" id="circle-menu">
-      <h1>nada qui por enquanto</h1>
+      <h1>nada aqui por enquanto</h1>
     </form>
   </div>
 </div>
